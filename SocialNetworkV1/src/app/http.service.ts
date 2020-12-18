@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpService {
-  private baseUrl = 'http://localhost:9090/flash-cards';
+  private baseUrl = 'http://localhost:4200/thetea';
   constructor(private http:HttpClient) { }
 
   getUser(id:number):Observable<any>{

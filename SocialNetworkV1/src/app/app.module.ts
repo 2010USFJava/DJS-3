@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RegisterComponent } from './register/register.component';
@@ -14,6 +14,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 
 @NgModule({
@@ -27,11 +28,13 @@ import { HttpService } from './http.service';
     SettingsComponent,
     CreateUserComponent,
     UserDetailsComponent,
-    UserListComponent
+    UserListComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [
