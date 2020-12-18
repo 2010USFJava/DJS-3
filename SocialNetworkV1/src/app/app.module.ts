@@ -9,7 +9,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-
+import { CreateUserComponent } from './create-user/create-user.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './http.service';
 
 
 @NgModule({
@@ -20,13 +24,19 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     LoginComponent,
     ProfileComponent,
     HomepageComponent,
-    SettingsComponent
+    SettingsComponent,
+    CreateUserComponent,
+    UserDetailsComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
