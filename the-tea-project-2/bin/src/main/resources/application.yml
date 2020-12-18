@@ -1,0 +1,13 @@
+server:
+  port: 9090
+  
+spring:
+  datasource:
+    url: jdbc:postgresql://djscubed.cqb6pzj3paxs.us-east-2.rds.amazonaws.com:5432/postgres
+    username: rootadmin
+    password: coff33saves
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect  
+    show-sql: true  
+    
