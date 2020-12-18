@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ import com.revature.repository.PostsRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-//@RequestMapping()
+@RequestMapping("/posts")
 public class PostsController {
 	@Autowired
 	private PostsRepository postsRepository;
@@ -46,7 +47,7 @@ public class PostsController {
 	}
 	
 	@PutMapping("/posts/{id}")
-	public ResponseEntity<Posts> updateUser(@PathVariable(value = "id") int postId,	@RequestBody Posts postDetails) {
+	public ResponseEntity<Posts> updatePost(@PathVariable(value = "id") int postId,	@RequestBody Posts postDetails) {
 		Posts post = postsRepository.findById(postId)
 				.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + postId));
 
@@ -57,7 +58,7 @@ public class PostsController {
 	}
 
 	@DeleteMapping("/posts/{id}")
-	public Map<String, Boolean> deleteUser(@PathVariable(value = "id") int postId)
+	public Map<String, Boolean> deletePost(@PathVariable(value = "id") int postId)
 			throws ResourceNotFoundException {
 		Posts post = postsRepository.findById(postId)
 				.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + postId));
