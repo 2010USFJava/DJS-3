@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpService {
-  private baseUrl = 'http://localhost:4200/thetea';
+  private baseUrl = 'http://localhost:5555/thetea';
   constructor(private http:HttpClient) { }
 
   getUser(id:number):Observable<any>{
@@ -14,7 +14,8 @@ export class HttpService {
   }
 
   createUser(user:Object):Observable<Object>{
-    return this.http.post(`${this.baseUrl}`, user);
+    console.log(user);
+    return this.http.post(`${this.baseUrl}/add`, user);
   }
 
   updateUser(id:number, value:any):Observable<Object>{
@@ -26,6 +27,6 @@ export class HttpService {
   }
 
   getUsersList():Observable<any>{
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get(`${this.baseUrl}/users`);
   }
 }
