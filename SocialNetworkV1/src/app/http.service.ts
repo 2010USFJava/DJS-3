@@ -29,4 +29,8 @@ export class HttpService {
   getUsersList():Observable<any>{
     return this.http.get(`${this.baseUrl}/users`);
   }
+
+  getUser(username:string, password:string):Observable<Object>{
+    return this.http.post(`${this.baseUrl}/${username}`, password);
+  }
 }
