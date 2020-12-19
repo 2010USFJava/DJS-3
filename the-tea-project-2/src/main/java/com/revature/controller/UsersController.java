@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.exception.ResourceNotFoundException;
 import com.revature.models.Users;
 import com.revature.repository.UsersRepository;
 
@@ -44,12 +47,12 @@ public class UsersController {
 	}
 	
 	@PostMapping("/users")
-	public Users createUser(@RequestBody Users user) {
+	public Users createUser(@Valid @RequestBody Users user) {
 		return usersRepository.save(user);
 	}
 	
 	@PutMapping("/users/{id}")
-	public ResponseEntity<Users> updateUser(@PathVariable(value = "id") int userId,	@RequestBody Users userDetails) {
+	public ResponseEntity<Users> updateUser(@PathVariable(value = "id") int userId,	@Valid @RequestBody Users userDetails) throws ResourceNotFoundException {
 		Users user = usersRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
 
