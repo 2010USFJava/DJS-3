@@ -17,6 +17,11 @@
         </div>
 
         <div class="form-group">
+            <label for="name">Username</label>
+            <input type="text" class="form-control" id="username" required [(ngModel)]="user.username" name="username">
+        </div>
+
+        <div class="form-group">
             <label for="name">Password</label>
             <input type="text" class="form-control" id="password" required [(ngModel)]="user.password" name="password">
         </div>
