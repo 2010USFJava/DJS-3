@@ -10,9 +10,9 @@
 		<relativePath />
 	</parent>
 	<groupId>com.revature</groupId>
-	<artifactId>spring-boot-flashcard</artifactId>
+	<artifactId>the-tea-project-2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-flashcard</name>
+	<name>the-tea-project-2</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

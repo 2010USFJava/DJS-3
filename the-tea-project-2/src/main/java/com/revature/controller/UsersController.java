@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -46,7 +47,8 @@ public class UsersController {
 		return users;
 	}
 	
-	@PostMapping("/users")
+	//@ResponseStatus(HttpStatus.CREATED)
+	@PostMapping("/add")
 	public Users createUser(@Valid @RequestBody Users user) {
 		return usersRepository.save(user);
 	}
