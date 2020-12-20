@@ -1,6 +1,7 @@
 <h1>Welcome to Something</h1>
-<form method="POST" action="">
+<form (ngSubmit)="onSubmit()">
     <label>Username:</label><input type="username" name="username"/>
     <label>Password:</label><input type="password" name="password"/>
     <button type="submit" value="login">Login</button>
 </form>
+<h1>This is the user you logged in with: {{user.firstname}} {{user.id}}</h1>
