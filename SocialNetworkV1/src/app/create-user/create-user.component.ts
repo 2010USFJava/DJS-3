@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-  user:User = new User();
+  user: User = new User();
   submitted = false;
 
   constructor(private httpService:HttpService, private router:Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
   newUser():void{
@@ -33,8 +33,9 @@ export class CreateUserComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log('in onSubmit');
     this.submitted = true;
-    this.save;
+    this.save();
   }
 
   gotoList(){

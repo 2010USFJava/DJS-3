@@ -15,7 +15,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { UpdateUserComponent } from './update-user/update-user.component';
-
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     HttpClientModule
   ],
   providers: [
-    HttpService
+    HttpService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })
