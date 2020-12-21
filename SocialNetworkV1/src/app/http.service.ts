@@ -30,8 +30,8 @@ export class HttpService {
     return this.http.get(`${this.baseUrl}/users`);
   }
 
-  /**add path mapping - sf */
   getLogin(username:string, password:string):Observable<any>{
-    return this.http.post(`${this.baseUrl}/`, {username, password}, {withCredentials: true });
+    console.log("in service login" + username + password)
+    return this.http.post(`${this.baseUrl}/login`, {username, password}, {withCredentials: true });
   }
 }
