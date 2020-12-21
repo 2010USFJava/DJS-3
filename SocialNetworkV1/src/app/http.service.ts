@@ -30,7 +30,8 @@ export class HttpService {
     return this.http.get(`${this.baseUrl}/users`);
   }
 
-  getUser(username:string, password:string):Observable<Object>{
-    return this.http.post(`${this.baseUrl}/${username}`, password);
+  /**add path mapping - sf */
+  getLogin(username:string, password:string):Observable<any>{
+    return this.http.post(`${this.baseUrl}/`, {username, password}, {withCredentials: true });
   }
 }
