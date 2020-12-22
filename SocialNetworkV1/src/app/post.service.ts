@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Post } from './post';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
   private baseUrl = 'http://localhost:5555/theteaPost';
+  //post:Post = new Post();
+
   constructor(private http:HttpClient) { }
   getPost(id:number):Observable<any>{
     return this.http.get(`${this.baseUrl}/${id}`);

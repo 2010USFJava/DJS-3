@@ -1,6 +1,6 @@
 export class Post {
-    postId:number;
-    userId:number;
-    post:string;
+    user_post_id:number;
+    user_id:number;
+    user_post:string;
     image: string;
 }

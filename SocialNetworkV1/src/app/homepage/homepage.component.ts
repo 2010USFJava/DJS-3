@@ -45,14 +45,14 @@ export class HomepageComponent implements OnInit {
   }
 
   save(){
-    this.postService.createPost(this.post).subscribe(
-      data => {
-        console.log(data);
-        console.log("in save method");
-        this.post = new Post();
+    this.post.user_id = 2;
+    console.log(this.post);
+    this.postService.createPost(this.post); 
+    console.log("in save method");
+        //this.post = new Post();
         //this.gotoPost();
-      },
-      error => console.log(error));
+      
+      //error => console.log(error);
   }
 
   onSubmit(){
