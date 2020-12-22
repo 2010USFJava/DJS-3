@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../post.service';
+import { ActivatedRoute,Router } from '@angular/router';
+import { Post } from '../post';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
@@ -6,10 +10,56 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  posts: Observable<Post[]>
+  post: Post = new Post();
+  submitted = false;
 
-  constructor() { }
+  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.reloadData();
+  }
+
+  reloadData(){
+    this.posts = this.postService.getPostsList();
+  }
+  deletePost(id:number){
+    this.postService.deletePost(id).subscribe(
+      data => {
+        console.log(data);
+        this.reloadData();
+      },
+      error => console.log(error));
+  }
+
+  postDetails(id:number){
+    this.router.navigate(['details', id]);
+  }
+
+  updatePost(id:number){
+    this.router.navigate(['update', id]);
+  }
+  newPost():void{
+    this.submitted=false;
+    this.post=new Post();
+  }
+
+  save(){
+    this.postService.createPost(this.post).subscribe(
+      data => {
+        console.log(data);
+        console.log("in save method");
+        this.post = new Post();
+        //this.gotoPost();
+      },
+      error => console.log(error));
+  }
+
+  onSubmit(){
+    console.log('in onSubmit');
+    this.submitted = true;
+    this.save();
   }
 
 }
+

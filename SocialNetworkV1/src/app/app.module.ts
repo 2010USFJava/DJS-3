@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RegisterComponent } from './register/register.component';
@@ -12,8 +12,10 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserListComponent } from './user-list/user-list.component';
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './http.service';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,19 @@ import { UserListComponent } from './user-list/user-list.component';
     SettingsComponent,
     CreateUserComponent,
     UserDetailsComponent,
-    UserListComponent
+    UserListComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpService,
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

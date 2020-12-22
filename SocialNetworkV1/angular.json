@@ -25,7 +25,7 @@
             ],
             "styles": [
               "src/styles.css",
-            "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "SocialNetworkV1"
+  "defaultProject": "SocialNetworkV1",
+  "cli": {
+    "analytics": "19ff546e-8637-401c-a76f-d1c7f9f10cea"
+  }
 }
