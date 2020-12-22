@@ -33,7 +33,8 @@ public class LoginController {
 	//changes made by sf: when iterating while loop would hit the first user, which did not meet the boolean set in if, then would hit else
 	//and code would exit while loop throwing ResourceNotFoundException. to get through all users took out else and put Exception outside while
 	//if wrong login ResourceNotFoundException will get thrown still
-	//there is opportunity to optimize this code but as it is now, it will return a login
+	//I think there is opportunity to optimize this code because I moved the exception outside the code block as a quick fix but I think there is a better
+	//place to put it, I'm just not sure where
 	
 	@PostMapping("/login")
 	public Users login(@Valid @RequestBody Users loginUser) throws ResourceNotFoundException {
