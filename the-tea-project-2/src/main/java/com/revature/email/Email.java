@@ -15,7 +15,7 @@ import java.io.IOException;
 
 @SpringBootApplication
 public class Email implements CommandLineRunner {
-	
+	//test jenkins
     @Autowired
     private JavaMailSender javaMailSender;
 
