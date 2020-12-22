@@ -9,8 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="users", schema="public")
@@ -29,7 +31,9 @@ public class Users {
 	private String password;
 	@Column(name="email", nullable=false)
 	private String email;
-	@ManyToMany(mappedBy = "users", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	
+	@JsonManagedReference
+	@OneToMany( fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	private List<Posts> posts;
 	
 	public Users() {

@@ -47,7 +47,8 @@ public class PostsController {
 	//changing method name to createPost instead of createUser
 	@PostMapping("/addPost")
 	public Posts createPost(@Valid @RequestBody Posts post) {
-		System.out.println("POST IS HERE " + post.toString());
+		System.out.println("POST IS HERE " + 
+	post.toString());
 		return postsRepository.save(post);
 	}
 	

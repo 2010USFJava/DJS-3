@@ -1,21 +1,21 @@
 package com.revature.models;
 
-import java.util.List;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "posts") //@Data @AllArgsConstructor @NoArgsConstructor @ToString(exclude = {"users"})
+@Table(name = "posts", schema = "public") //@Data @AllArgsConstructor @NoArgsConstructor @ToString(exclude = {"users"})
 public class Posts {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +23,12 @@ public class Posts {
 	private int postId;
 	@Column(name = "user_post")
 	private String userPost;
-//	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
-	private int userId;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.REFRESH})
 	@JsonBackReference
-	private List<Users> users;
+	//@JoinColumn(name = "user_id", referencedColumnName = "user_id")
+	private Users user;
+	
 	private String image;
 //	private List<Users> likes; attached @Table to likes table???
 
