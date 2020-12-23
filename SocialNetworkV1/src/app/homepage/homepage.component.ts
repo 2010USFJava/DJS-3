@@ -22,6 +22,8 @@ export class HomepageComponent implements OnInit {
 
   reloadData(){
     this.posts = this.postService.getPostsList();
+    console.log(this.posts);
+    console.log("in reload data");
   }
   deletePost(id:number){
     this.postService.deletePost(id).subscribe(

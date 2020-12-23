@@ -31,6 +31,7 @@ export class PostService {
   }
 
   getPostsList():Observable<any>{
+    console.log("in post list");
     return this.http.get(`${this.baseUrl}/posts`);
   }
 }

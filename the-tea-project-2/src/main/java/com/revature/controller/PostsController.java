@@ -8,6 +8,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,6 +33,8 @@ public class PostsController {
 	@Autowired
 	private PostsRepository postsRepository;
 	
+	//@GetMapping("/posts")
+	//@Query(value = "select * from posts")
 	@GetMapping("/posts")
 	public List<Posts> getAllPosts() {
 		return postsRepository.findAll();

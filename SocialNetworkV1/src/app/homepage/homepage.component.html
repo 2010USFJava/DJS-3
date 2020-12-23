@@ -6,7 +6,7 @@
         <form (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="name">Post a picture, how you feel, spill the tea!</label>
-                <input type="text" class="form-control" id="post" required [(ngModel)]="post.post" name="post">
+                <input type="text" class="form-control" id="user_post" required [(ngModel)]="post.user_post" name="user_post">
             </div>
             
             <button type="submit" class="btn btn-success">Submit</button>
@@ -25,7 +25,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let post of posts | async">
-            <td>{{post.post}}</td>
+            <td>{{post.user_post}}</td>
             <td><button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
                 <button (click)="updateUser(user.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
                 <button (click)="userDetails(user.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
