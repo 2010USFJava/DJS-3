@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.exception.ResourceNotFoundException;
-import com.revature.models.Users;
+import com.revature.models.User;
 import com.revature.repository.UsersRepository;
 
 @CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials ="true")
@@ -25,7 +25,7 @@ public class LoginController {
 	private UsersRepository userRepository;
 	
 	@GetMapping("")
-	private List<Users> getAllUsers(){
+	private List<User> getAllUsers(){
 		return userRepository.findAll();
 	}
 	
@@ -36,11 +36,11 @@ public class LoginController {
 	//there is opportunity to optimize this code but as it is now, it will return a login
 	
 	@PostMapping("/login")
-	public Users login(@Valid @RequestBody Users loginUser) throws ResourceNotFoundException {
+	public User login(@Valid @RequestBody User loginUser) throws ResourceNotFoundException {
 		System.out.println(loginUser.getUsername());
-		List<Users> userList = getAllUsers();
-		Users user = new Users();
-		Iterator<Users> iterator = userList.iterator();
+		List<User> userList = getAllUsers();
+		User user = new User();
+		Iterator<User> iterator = userList.iterator();
 		while(iterator.hasNext()) {
 			System.out.println(userList.iterator());
 			user = iterator.next();

@@ -48,10 +48,11 @@ public class PostsController {
 	}
 	
 	//changing method name to createPost instead of createUser
+	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("/addPost")
-	public Posts createPost(@Valid @RequestBody Posts post) {
+	public Posts createPost( Posts post) {
 		System.out.println("POST IS HERE " + 
-	post.toString());
+	post);
 		return postsRepository.save(post);
 	}
 	

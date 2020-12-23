@@ -2,11 +2,11 @@
     <div class="panel-heading">
       <h2>Homepage</h2>
     </div>
-    <div [hidden]="submitted" style="width:400px;">
+    <div style="width:400px;">
         <form (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="name">Post a picture, how you feel, spill the tea!</label>
-                <input type="text" class="form-control" id="user_post" required [(ngModel)]="post.user_post" name="user_post">
+                <input type="text" class="form-control" id="userPost" required [(ngModel)]="post.userPost" name="userPost">
             </div>
             
             <button type="submit" class="btn btn-success">Submit</button>
@@ -25,10 +25,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let post of posts | async">
-            <td>{{post.user_post}}</td>
-            <td><button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
-                <button (click)="updateUser(user.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
-                <button (click)="userDetails(user.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            <td>{{post.userPost}}</td>
+            <td><button (click)="deleteUser()" class="btn btn-danger">Delete</button>
+                <button (click)="updateUser()" class="btn btn-info" style="margin-left: 10px">Update</button>
+                <button (click)="userDetails()" class="btn btn-info" style="margin-left: 10px">Details</button>
             </td>
           </tr>
         </tbody>

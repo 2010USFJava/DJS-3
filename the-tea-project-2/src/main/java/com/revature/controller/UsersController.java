@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.exception.ResourceNotFoundException;
-import com.revature.models.Users;
+import com.revature.models.User;
 import com.revature.repository.UsersRepository;
 
 
@@ -36,26 +36,26 @@ public class UsersController {
 	
 	
 	@GetMapping("/users")
-	public List<Users> getAllEmployees() {
+	public List<User> getAllEmployees() {
 		return usersRepository.findAll();
 	}
 	
 	@ResponseStatus(HttpStatus.CREATED)
 	@GetMapping("/users/{id}")
-	public Optional<Users> getUserById(@PathVariable(value = "id") int userId) {
-		Optional<Users> users = usersRepository.findById(userId);
+	public Optional<User> getUserById(@PathVariable(value = "id") int userId) {
+		Optional<User> users = usersRepository.findById(userId);
 		return users;
 	}
 	
 	//@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("/add")
-	public Users createUser(@Valid @RequestBody Users user) {
+	public User createUser(@Valid @RequestBody User user) {
 		return usersRepository.save(user);
 	}
 	
 	@PutMapping("/users/{id}")
-	public ResponseEntity<Users> updateUser(@PathVariable(value = "id") int userId,	@Valid @RequestBody Users userDetails) throws ResourceNotFoundException {
-		Users user = usersRepository.findById(userId)
+	public ResponseEntity<User> updateUser(@PathVariable(value = "id") int userId,	@Valid @RequestBody User userDetails) throws ResourceNotFoundException {
+		User user = usersRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
 
 		user.setFirstName(userDetails.getFirstName());
@@ -63,14 +63,14 @@ public class UsersController {
 		user.setUsername(userDetails.getUsername());
 		user.setPassword(userDetails.getPassword());
 		user.setEmail(userDetails.getEmail());
-		final Users updatedUser = usersRepository.save(user);
+		final User updatedUser = usersRepository.save(user);
 		return ResponseEntity.ok(updatedUser);
 	}
 
 	@DeleteMapping("/users/{id}")
 	public Map<String, Boolean> deleteUser(@PathVariable(value = "id") int userId)
 			throws ResourceNotFoundException {
-		Users user = usersRepository.findById(userId)
+		User user = usersRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
 
 		usersRepository.delete(user);

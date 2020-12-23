@@ -25,6 +25,7 @@ export class HomepageComponent implements OnInit {
     console.log(this.posts);
     console.log("in reload data");
   }
+  
   deletePost(id:number){
     this.postService.deletePost(id).subscribe(
       data => {
@@ -41,13 +42,14 @@ export class HomepageComponent implements OnInit {
   updatePost(id:number){
     this.router.navigate(['update', id]);
   }
+
   newPost():void{
     this.submitted=false;
     this.post=new Post();
   }
 
   save(){
-    this.post.user_id = 2;
+    this.post.userId = 2;
     console.log(this.post);
     this.postService.createPost(this.post); 
     console.log("in save method");

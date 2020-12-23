@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,15 +22,15 @@ import lombok.NoArgsConstructor;
 @Data @AllArgsConstructor @NoArgsConstructor
 @Entity
 @Table(name="users", schema="public")
-public class Users implements Serializable{
+public class User implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -55065650688470015L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="user_id")
-	private int userId;
+	@Column(name="user_id", nullable=false)
+	private int id;
 	@Column(name="first_name", nullable=false)
 	private String firstName;
 	@Column(name="last_name", nullable=false)
@@ -40,8 +42,8 @@ public class Users implements Serializable{
 	@Column(name="email", nullable=false)
 	private String email;
 	
-	//@JsonManagedReference
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	@JsonManagedReference
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = { CascadeType.ALL})
 	private List<Posts> posts;
 	
 	

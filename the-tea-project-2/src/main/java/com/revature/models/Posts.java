@@ -40,13 +40,13 @@ public class Posts implements Serializable{
 //	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 //	private int userId;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.REFRESH})
 	@JsonBackReference
-	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
-	private Users user;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = { CascadeType.ALL})
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 	
 	@Lob
-	private byte [] image;
+	private String image;
 	
 //	private List<Users> likes; attached @Table to likes table???
 
