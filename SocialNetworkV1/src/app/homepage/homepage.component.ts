@@ -51,7 +51,7 @@ export class HomepageComponent implements OnInit {
   save(){
     this.post.userId = 2;
     console.log(this.post);
-    this.postService.createPost(this.post); 
+    this.postService.createPost(this.post,this.post.userId); 
     console.log("in save method");
         //this.post = new Post();
         //this.gotoPost();

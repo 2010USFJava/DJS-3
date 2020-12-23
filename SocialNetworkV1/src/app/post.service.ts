@@ -16,10 +16,10 @@ export class PostService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  createPost(post:Object):Observable<Object>{
+  createPost(post:Object, userId:number):Observable<Object>{
     console.log(post);
     console.log("in create post");
-    return this.http.post(`${this.baseUrl}/addPost`, post);
+    return this.http.put(`${this.baseUrl}/addPost/${userId}`, post);
   }
 
   updatePost(id:number, value:any):Observable<Object>{
