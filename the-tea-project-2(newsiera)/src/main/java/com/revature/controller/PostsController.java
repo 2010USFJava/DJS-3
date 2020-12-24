@@ -68,7 +68,7 @@ public class PostsController {
 //		return postsRepository.save(post);
 //	}
 	@ResponseStatus(HttpStatus.CREATED)
-	@PutMapping("/addPost/{userId}")
+	@PostMapping("/addPost/{userId}")
 	public Posts createPost(@PathVariable(value="userId") int userId, @Valid @RequestBody Posts post) {
 		System.out.println("POST IS HERE " + 
 	post);
@@ -76,6 +76,15 @@ public class PostsController {
 		post.setUser(user);
 		return postsRepository.save(post);
 	}
+	
+	//This works
+//	@ResponseStatus(HttpStatus.CREATED)
+//	@PostMapping("/addPost")
+//	public Posts createPost(@Valid @RequestBody Posts post) {
+//		System.out.println("POST IS HERE " + 
+//	post);
+//		return postsRepository.save(post);
+//	}
 
 	
 	@PutMapping("/updatePosts/{id}")
