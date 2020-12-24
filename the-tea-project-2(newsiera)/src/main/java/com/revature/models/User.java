@@ -41,6 +41,9 @@ public class User implements Serializable{
 	private String password;
 	@Column(name="email", nullable=false)
 	private String email;
+	@Column(name="profilepicture")
+	private String profilepicture;
+	
 	
 //	@JsonManagedReference
 //	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = { CascadeType.ALL})

@@ -12,21 +12,21 @@ export class PostService {
   //post:Post = new Post();
 
   constructor(private http:HttpClient) { }
-  getPost(id:number):Observable<any>{
-    return this.http.get(`${this.baseUrl}/${id}`);
+  getPost(id:string):Observable<any>{
+    return this.http.get(`${this.baseUrl}/posts/${id}`);
   }
 
-  createPost(post:Object, userId:number):Observable<Object>{
+  createPost(post:Object, userId:string):Observable<Object>{
     console.log(post);
     console.log("in create post");
     return this.http.post(`${this.baseUrl}/addPost/${userId}`, post);
   }
 
-  updatePost(id:number, value:any):Observable<Object>{
+  updatePost(id:string, value:any):Observable<Object>{
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
-  deletePost(id:number):Observable<any>{
+  deletePost(id:string):Observable<any>{
     return this.http.delete(`${this.baseUrl}/${id}`, {responseType:'text'});
   }
 

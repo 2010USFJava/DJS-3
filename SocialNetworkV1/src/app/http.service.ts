@@ -9,8 +9,8 @@ export class HttpService {
   private baseUrl = 'http://localhost:5555/thetea';
   constructor(private http:HttpClient) { }
 
-  getUser(id:number):Observable<any>{
-    return this.http.get(`${this.baseUrl}/${id}`);
+  getUser(id:string):Observable<any>{
+    return this.http.get(`${this.baseUrl}/users/${id}`);
   }
 
   createUser(user:Object):Observable<Object>{
@@ -18,11 +18,11 @@ export class HttpService {
     return this.http.post(`${this.baseUrl}/add`, user);
   }
 
-  updateUser(id:number, value:any):Observable<Object>{
+  updateUser(id:string, value:any):Observable<Object>{
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
-  deleteUser(id:number):Observable<any>{
+  deleteUser(id:string):Observable<any>{
     return this.http.delete(`${this.baseUrl}/${id}`, {responseType:'text'});
   }
 
@@ -33,5 +33,9 @@ export class HttpService {
   getLogin(username:string, password:string):Observable<any>{
     console.log("in service login " + username + password);
     return this.http.post(`${this.baseUrl}/login`, {username, password}, {withCredentials: true });
+  }
+
+  getUserByName(name:string):Observable<any>{
+    return this.http.get(`${this.baseUrl}/search/?name=${name}`);
   }
 }

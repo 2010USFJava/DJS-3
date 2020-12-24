@@ -14,11 +14,15 @@ export class HomepageComponent implements OnInit {
   posts: Observable<Post[]>
   post: Post = new Post();
   submitted = false;
+  id:string;
 
   constructor(private postService: PostService, private route: ActivatedRoute, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit(){
     this.reloadData();
+    console.log(this.cookieService.get('cookie'));
+    this.cookieService.get('cookie');
+    this.id = this.cookieService.get('cookie');
   }
 
   reloadData(){
@@ -27,7 +31,7 @@ export class HomepageComponent implements OnInit {
     console.log("in reload data");
   }
   
-  deletePost(id:number){
+  deletePost(id:string){
     this.postService.deletePost(id).subscribe(
       data => {
         console.log(data);
@@ -36,11 +40,11 @@ export class HomepageComponent implements OnInit {
       error => console.log(error));
   }
 
-  postDetails(id:number){
+  postDetails(id:string){
     this.router.navigate(['details', id]);
   }
 
-  updatePost(id:number){
+  updatePost(id:string){
     this.router.navigate(['update', id]);
   }
 
@@ -50,9 +54,9 @@ export class HomepageComponent implements OnInit {
   }
 
   save(){
-    this.post.userId = 2;
+    //this.post.userId = 2;
     console.log(this.post);
-    this.postService.createPost(this.post, this.post.userId).subscribe(
+    this.postService.createPost(this.post, this.id).subscribe(
       data => {
         //this.post.likeCount = 0;
         console.log(data);

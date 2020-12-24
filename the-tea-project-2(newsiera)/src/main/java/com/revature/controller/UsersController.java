@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,7 +36,6 @@ public class UsersController {
 	@Autowired
 	private UsersRepository usersRepository;
 	
-	
 	@GetMapping("/users")
 	public List<User> getAllEmployees() {
 		return usersRepository.findAll();
@@ -45,6 +46,29 @@ public class UsersController {
 	public Optional<User> getUserById(@PathVariable(value = "id") int userId) {
 		Optional<User> users = usersRepository.findById(userId);
 		return users;
+	}
+	
+	@GetMapping("/search")
+	public ResponseEntity<List<User>> getAllUsers(@RequestParam(required = false) String name){
+		try {
+			List<User> users = new ArrayList<User>();
+			if(name == null)
+				usersRepository.findAll().forEach(users::add);
+			else
+				usersRepository.findByName(name).forEach(users::add);
+			if(users.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+			return new ResponseEntity<>(users, HttpStatus.OK);
+		} catch(Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(value="/{firstName}" , produces=MediaType.APPLICATION_JSON_VALUE) 
+	public List<User> findByFirstName(String firstName) {
+		return (List<User>) usersRepository.findByName(firstName);
+
 	}
 	
 	//@ResponseStatus(HttpStatus.CREATED)

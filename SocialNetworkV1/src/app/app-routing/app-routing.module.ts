@@ -14,14 +14,15 @@ const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'landing-page'}
                         {path: 'landing-page', component: LandingPageComponent},
                         {path: 'register', component: RegisterComponent},
                         {path: 'login', component: LoginComponent},
-                        {path: 'users', component: UserListComponent},
+                        {path: 'homepage/users', component: UserListComponent},
                         {path: 'add', component: CreateUserComponent},
                         {path: 'posts/update/:id', component: UpdateUserComponent},
                         {path: 'details/:id', component: UserDetailsComponent},
                         {path: 'homepage', component: HomepageComponent},
                         {path: 'posts', component: HomepageComponent},
                         {path: 'posts/profile', component: ProfileComponent},
-                        {path: 'posts/logout', component: LandingPageComponent}
+                        {path: 'homepage/profile', component: ProfileComponent},
+                        {path: 'posts/logout', component: LandingPageComponent}                  
                       ];
 
 @NgModule({

@@ -54,10 +54,13 @@ public class PostsController {
 	
 	@ResponseStatus(HttpStatus.CREATED)
 	@GetMapping("/posts/{id}")
-	public Optional<Posts> getPostById(@PathVariable(value = "id") int postId) {
-		Optional<Posts> posts = postsRepository.findById(postId);
+	public List<Posts> getPostById(@PathVariable(value = "id") int userId) {
+		List<Posts> posts = postsRepository.findByUserId(userId);
+		System.out.println("in getPostById " + posts);
 		return posts;
 	}
+	
+	
 	
 	//changing method name to createPost instead of createUser
 //	//@ResponseStatus(HttpStatus.CREATED)
@@ -98,7 +101,7 @@ public class PostsController {
 		return ResponseEntity.ok(updatedPost);
 	}
 
-	@DeleteMapping("/posts/{id}")
+	@DeleteMapping("/deletePosts/{id}")
 	public Map<String, Boolean> deletePost(@PathVariable(value = "id") int postId)
 			throws ResourceNotFoundException {
 		Posts post = postsRepository.findById(postId)

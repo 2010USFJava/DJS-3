@@ -1,3 +1,11 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <!-- <label for="name">Post a picture, how you feel, spill the tea!</label> -->
+    <input placeholder="Search User" type="text" class="form-control" id="name" required [(ngModel)]="name" name="name">
+</div>
+<button type="submit" class="btn btn-success">Search</button>
+</form>
+
 <div class="panel panel-primary">
     <div class="panel-heading">
       <h2>User List</h2>
@@ -13,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users | async">
+          <tr *ngFor="let user of users"> 
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
             <td>{{user.email}}</td>

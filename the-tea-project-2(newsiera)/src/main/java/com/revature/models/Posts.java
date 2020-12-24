@@ -49,7 +49,7 @@ public class Posts implements Serializable{
 //	@Column(name = "user_id")
 //	private int userId;
 	
-	@Lob
+	//@Lob
 	private String image;
 	
 //	private List<Users> likes; attached @Table to likes table???
