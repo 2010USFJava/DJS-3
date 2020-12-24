@@ -8,6 +8,7 @@ import { CreateUserComponent } from '../create-user/create-user.component';
 import { UserListComponent} from '../user-list/user-list.component';
 import { UpdateUserComponent } from '../update-user/update-user.component';
 import { HomepageComponent } from '../homepage/homepage.component';
+import { ProfileComponent } from '../profile/profile.component';
 
 const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'landing-page'}, 
                         {path: 'landing-page', component: LandingPageComponent},
@@ -15,9 +16,12 @@ const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'landing-page'}
                         {path: 'login', component: LoginComponent},
                         {path: 'users', component: UserListComponent},
                         {path: 'add', component: CreateUserComponent},
-                        {path: 'update/:id', component: UpdateUserComponent},
+                        {path: 'posts/update/:id', component: UpdateUserComponent},
                         {path: 'details/:id', component: UserDetailsComponent},
-                        {path: 'homepage', component: HomepageComponent}
+                        {path: 'homepage', component: HomepageComponent},
+                        {path: 'posts', component: HomepageComponent},
+                        {path: 'posts/profile', component: ProfileComponent},
+                        {path: 'posts/logout', component: LandingPageComponent}
                       ];
 
 @NgModule({

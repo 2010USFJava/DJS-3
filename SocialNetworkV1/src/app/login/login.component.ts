@@ -35,3 +35,10 @@ export class LoginComponent implements OnInit {
     )
   }
 }
+
+/*
+if(this._httpService.getLogin(null, null)){
+      console.log("creds null");
+    } else {
+      console.log("correct creds");
+*/

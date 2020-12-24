@@ -3,6 +3,7 @@ import { PostService } from '../post.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Post } from '../post';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-homepage',
@@ -14,7 +15,7 @@ export class HomepageComponent implements OnInit {
   post: Post = new Post();
   submitted = false;
 
-  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit(){
     this.reloadData();
@@ -51,8 +52,19 @@ export class HomepageComponent implements OnInit {
   save(){
     this.post.userId = 2;
     console.log(this.post);
-    this.postService.createPost(this.post,this.post.userId); 
-    console.log("in save method");
+    this.postService.createPost(this.post, this.post.userId).subscribe(
+      data => {
+        //this.post.likeCount = 0;
+        console.log(data);
+        this.cookieService.get('cookie');
+        var id = this.cookieService.get('cookie');
+        //const post = new FormData();
+        //post.append('post', data);
+        this.gotoList();
+      },
+      error => console.log(error));  
+    //console.log("in save method");
+    //this.gotoList();
         //this.post = new Post();
         //this.gotoPost();
       
@@ -63,6 +75,11 @@ export class HomepageComponent implements OnInit {
     console.log('in onSubmit');
     this.submitted = true;
     this.save();
+  }
+
+  gotoList(){
+    console.log('in gotoList');
+    this.router.navigate(['/posts']);
   }
 
 }

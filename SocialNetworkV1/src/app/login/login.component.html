@@ -1,8 +1,8 @@
 <h1>Welcome to Something</h1>
-<form (ngSubmit)="onSubmit()" action="homepage.component.html">
+<form (ngSubmit)="onSubmit()"> <!--action="homepage.component.html"-->
     <label>Username:</label><input type="username" id="username" required [(ngModel)]="user.username" name="username"/>
     <label>Password:</label><input type="password" id="password" required [(ngModel)]="user.password" name="password"/>
-    <button [routerLink]="['/homepage']" type="submit" value="login">Login</button>
+    <button type="button" [routerLink]="['/homepage']" type="submit" value="login">Login</button>
     
 </form>
 <h1>This is the user you logged in with: {{login.firstName}} {{login.userId}}</h1>

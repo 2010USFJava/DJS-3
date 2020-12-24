@@ -31,7 +31,7 @@ export class HttpService {
   }
 
   getLogin(username:string, password:string):Observable<any>{
-    console.log("in service login" + username + password)
+    console.log("in service login " + username + password);
     return this.http.post(`${this.baseUrl}/login`, {username, password}, {withCredentials: true });
   }
 }
