@@ -4,6 +4,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { Post } from '../post';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { Likes } from '../likes';
 
 @Component({
   selector: 'app-homepage',
@@ -13,6 +14,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class HomepageComponent implements OnInit {
   posts: Observable<Post[]>
   post: Post = new Post();
+  like: Likes = new Likes();
   submitted = false;
   id:string;
 
@@ -84,6 +86,15 @@ export class HomepageComponent implements OnInit {
   gotoList(){
     console.log('in gotoList');
     this.router.navigate(['/posts']);
+  }
+
+  createLike(id:string){
+    this.postService.createLike(this.like, id).subscribe(
+      data => {
+        console.log(data);
+        this.reloadData();
+      },
+      error => console.log(error));
   }
 
 }

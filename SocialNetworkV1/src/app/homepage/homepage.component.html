@@ -46,10 +46,10 @@
         <tbody>
           <tr *ngFor="let post of posts | async">
             <td>{{post.userPost}}</td>
-            <!-- <td><button (click)="deleteUser()" class="btn btn-danger">Delete</button>
-                <button (click)="updateUser()" class="btn btn-info" style="margin-left: 10px">Update</button>
-                <button (click)="userDetails()" class="btn btn-info" style="margin-left: 10px">Details</button>
-            </td> -->
+            <td><button (click)="createLike()" class="btn btn-danger">Like</button>
+                 <!--<button (click)="updateUser()" class="btn btn-info" style="margin-left: 10px">Update</button>
+                <button (click)="userDetails()" class="btn btn-info" style="margin-left: 10px">Details</button>-->
+            </td> 
           </tr>
         </tbody>
       </table>
