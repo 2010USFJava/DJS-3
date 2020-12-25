@@ -97,5 +97,10 @@ export class HomepageComponent implements OnInit {
       error => console.log(error));
   }
 
+  upload(){
+    this.postService.s3upload();
+    
+  }
+
 }
 
