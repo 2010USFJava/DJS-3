@@ -56,7 +56,7 @@ export class PostService {
     }
     console.log(url);
     document.getElementById('rando').innerHTML='<img src='+url+ ' />'
-    return this.http.post(`${this.url}/${this.pic}`);
+    return this.http.post(`${url}/${pic}`);
    
     }
     testImage(URL:any):any {
