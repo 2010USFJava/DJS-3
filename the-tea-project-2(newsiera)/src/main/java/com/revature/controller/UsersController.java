@@ -77,7 +77,7 @@ public class UsersController {
 		return usersRepository.save(user);
 	}
 	
-	@PutMapping("/users/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable(value = "id") int userId,	@Valid @RequestBody User userDetails) throws ResourceNotFoundException {
 		User user = usersRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));

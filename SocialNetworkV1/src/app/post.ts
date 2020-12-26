@@ -3,4 +3,5 @@ export class Post {
     userPost:string;
     userId:number;
     image: string;
+    likes: number;
 }

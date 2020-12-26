@@ -25,12 +25,13 @@ export class UpdateUserComponent implements OnInit {
       data => {
         console.log(data)
         this.user = data;
+        console.log(this.user.userId)
       },
       error => console.log(error));
   }
 
    updateUser(){
-    this.httpService.updateUser(this.id, this.user).subscribe(
+    this.httpService.updateUser(this.user).subscribe(
       data => {
         console.log(data);
         this.user = new User();
@@ -44,7 +45,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
   gotoList(){
-    this.router.navigate(['/users']);
+    this.ngOnInit();
   }
 
 }

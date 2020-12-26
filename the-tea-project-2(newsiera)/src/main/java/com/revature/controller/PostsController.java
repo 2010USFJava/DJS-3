@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.hibernate.exception.GenericJDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -111,5 +112,20 @@ public class PostsController {
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return response;
+	}
+	
+	@PostMapping("/likes/{postId}")
+	public void getLikesById(@PathVariable(value = "postId") int postId) throws GenericJDBCException{
+		postsRepository.getLikes(postId);
+//		System.out.println("in getLikesById " + maxLikes);
+		try {
+			
+		}
+		catch(GenericJDBCException e){
+			e.getSQLException();
+			e.printStackTrace();
+		}
+		
+		//return maxLikes;
 	}
 }

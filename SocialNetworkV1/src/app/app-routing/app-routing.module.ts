@@ -17,6 +17,7 @@ const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'landing-page'}
                         {path: 'homepage/users', component: UserListComponent},
                         {path: 'add', component: CreateUserComponent},
                         {path: 'posts/update/:id', component: UpdateUserComponent},
+                        {path: 'homepage/update/:id', component: UpdateUserComponent},
                         {path: 'details/:id', component: UserDetailsComponent},
                         {path: 'homepage', component: HomepageComponent},
                         {path: 'posts', component: HomepageComponent},

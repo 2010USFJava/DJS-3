@@ -39,39 +39,39 @@ export class PostService {
   createLike(like:Object, postId:string):Observable<Object>{
     console.log(like);
     console.log("in create like");
-    return this.http.post(`${this.baseUrl}/addLikes/${postId}`, like);
+    return this.http.post(`${this.baseUrl}/likes/${postId}`, like);
   }
 
   getLikes(id:string):Observable<any>{
     return this.http.get(`${this.baseUrl}/likes/${id}`);
   }
 
-  s3upload():Observable<any> {
-    console.log('in s3upload');
-    let pic =(<HTMLInputElement>document.getElementById("imgUp")).value;
-    console.log(pic);
-    let url = 'https://thetea.s3.us-east-2.amazonaws.com';
-    if(this.testImage(url)){
-        return null;
-    }
-    console.log(url);
-    document.getElementById('rando').innerHTML='<img src='+url+ ' />'
-    return this.http.post(`${url}/${pic}`);
+//   s3upload():Observable<any> {
+//     console.log('in s3upload');
+//     let pic =(<HTMLInputElement>document.getElementById("imgUp")).value;
+//     console.log(pic);
+//     let url = 'https://thetea.s3.us-east-2.amazonaws.com';
+//     if(this.testImage(url)){
+//         return null;
+//     }
+//     console.log(url);
+//     document.getElementById('rando').innerHTML='<img src='+url+ ' />'
+//     return this.http.post(`${url}/${pic}`);
    
-    }
-    testImage(URL:any):any {
-        var tester=new Image();
-        //tester.onload=imageFound;
-        tester.onerror=this.imageNotFound;
-        tester.src=URL;
-    }
+//     }
+//     testImage(URL:any):any {
+//         var tester=new Image();
+//         //tester.onload=imageFound;
+//         tester.onerror=this.imageNotFound;
+//         tester.src=URL;
+//     }
     
-    imageFound():void {
-        alert('That image is found and loaded');
-    }
+//     imageFound():void {
+//         alert('That image is found and loaded');
+//     }
     
-    imageNotFound():boolean {
-        alert('That image was not found.');
-        return true;
-    } 
+//     imageNotFound():boolean {
+//         alert('That image was not found.');
+//         return true;
+//     } 
 }

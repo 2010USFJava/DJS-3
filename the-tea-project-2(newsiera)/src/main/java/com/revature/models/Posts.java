@@ -45,6 +45,9 @@ public class Posts implements Serializable{
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
 	
+	@Column(name="likes")
+	private int likes;
+	
 	
 //	@Column(name = "user_id")
 //	private int userId;
