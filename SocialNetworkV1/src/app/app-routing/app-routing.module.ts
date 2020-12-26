@@ -12,18 +12,16 @@ import { ProfileComponent } from '../profile/profile.component';
 
 const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'landing-page'}, 
                         {path: 'landing-page', component: LandingPageComponent},
-                        {path: 'register', component: RegisterComponent},
-                        {path: 'login', component: LoginComponent},
-                        {path: 'homepage/users', component: UserListComponent},
-                        {path: 'add', component: CreateUserComponent},
-                        {path: 'posts/update/:id', component: UpdateUserComponent},
-                        {path: 'homepage/update/:id', component: UpdateUserComponent},
-                        {path: 'details/:id', component: UserDetailsComponent},
-                        {path: 'homepage', component: HomepageComponent},
-                        {path: 'posts', component: HomepageComponent},
-                        {path: 'posts/profile', component: ProfileComponent},
-                        {path: 'homepage/profile', component: ProfileComponent},
-                        {path: 'posts/logout', component: LandingPageComponent}                  
+                        {path: 'landing-page/register', component: RegisterComponent},
+                        {path: 'landing-page/login', component: LoginComponent},
+                        {path: 'landing-page/users', component: UserListComponent},
+                        {path: 'landing-page/add', component: CreateUserComponent},
+                        {path: 'landing-page/update/:id', component: UpdateUserComponent},
+                        {path: 'landing-page/details/:id', component: UserDetailsComponent},
+                        {path: 'landing-page/homepage', component: HomepageComponent},
+                        {path: 'landing-page/posts', component: HomepageComponent},
+                        {path: 'landing-page/profile', component: ProfileComponent},
+                        {path: 'landing-page/logout', component: LandingPageComponent}                  
                       ];
 
 @NgModule({

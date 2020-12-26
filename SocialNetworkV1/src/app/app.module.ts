@@ -17,6 +17,7 @@ import { HttpService } from './http.service';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { CookieService } from 'ngx-cookie-service';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PostDetailsComponent } from './post-details/post-details.component';
     UserDetailsComponent,
     UserListComponent,
     UpdateUserComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

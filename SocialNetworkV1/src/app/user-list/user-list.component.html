@@ -1,3 +1,4 @@
+<app-nav-bar></app-nav-bar>
 <form (ngSubmit)="onSubmit()">
   <div class="form-group">
     <!-- <label for="name">Post a picture, how you feel, spill the tea!</label> -->
@@ -8,7 +9,7 @@
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-      <h2>User List</h2>
+      <h2>Users</h2>
     </div>
     <div class="panel-body">
       <table class="table table-striped">
@@ -26,10 +27,10 @@
             <td>{{user.lastName}}</td>
             <td>{{user.email}}</td>
             <td>{{user.username}}</td>
-            <td><button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
+            <!-- <td><button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
                 <button (click)="updateUser(user.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
                 <button (click)="userDetails(user.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>

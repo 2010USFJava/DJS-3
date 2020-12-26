@@ -19,7 +19,7 @@ export class HttpService {
   }
 
   updateUser(value:any):Observable<Object>{
-    return this.http.put(`${this.baseUrl}/${value.userId}`, value);
+    return this.http.post(`${this.baseUrl}/${value.userId}`, value);
   }
 
   deleteUser(id:string):Observable<any>{

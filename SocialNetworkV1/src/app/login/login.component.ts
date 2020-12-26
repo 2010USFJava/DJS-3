@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
           console.log("successful");
           this.cookieService.set('cookie', `${this.login.userId}`)
           console.log(this.cookieService.get('cookie'));
-          this._router.navigate(['/homepage']);
+          this._router.navigate(['/landing-page/homepage']);
           console.log(data);
           console.log(this.login.userId)
         } else {

@@ -43,11 +43,11 @@ export class HomepageComponent implements OnInit {
   }
 
   postDetails(id:string){
-    this.router.navigate(['details', id]);
+    this.router.navigate(['/landing-page/details', id]);
   }
 
   updatePost(id:string){
-    this.router.navigate(['update', id]);
+    this.router.navigate(['/landing-page/update', id]);
   }
 
   newPost():void{
@@ -85,7 +85,7 @@ export class HomepageComponent implements OnInit {
 
   gotoList(){
     console.log('in gotoList');
-    this.router.navigate(['/posts']);
+    this.router.navigate(['/landing-page/posts']);
   }
 
   createLike(id:string){

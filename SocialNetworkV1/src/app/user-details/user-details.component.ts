@@ -31,7 +31,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   list(){
-    this.router.navigate(['users']);
+    this.router.navigate(['/landing-page/users']);
   }
 
 }

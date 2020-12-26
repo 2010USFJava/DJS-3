@@ -35,11 +35,11 @@ export class UserListComponent implements OnInit {
   }
 
   userDetails(id:string){
-    this.router.navigate(['details', id]);
+    this.router.navigate(['/landing-page/details', id]);
   }
 
   updateUser(id:string){
-    this.router.navigate(['update', id]);
+    this.router.navigate(['/landing-page/update', id]);
   }
 
   searchUser(): void{
