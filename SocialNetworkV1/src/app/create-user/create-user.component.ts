@@ -23,6 +23,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   save(){
+    this.user.profilepicture = "https://thetea.s3.us-east-2.amazonaws.com/Profile-ICon.png";
     this.httpService.createUser(this.user).subscribe(
       data => {
         console.log(data);

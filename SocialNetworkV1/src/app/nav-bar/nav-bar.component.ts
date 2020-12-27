@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
 
   logout() {
     this.cookieService.delete('cookie');
-    this.router.navigate(['/landing-page/login']);
+    this.router.navigate(['/landing-page']);
   }
 
 }

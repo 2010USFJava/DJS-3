@@ -12,3 +12,7 @@
 .card-body {
     background-color: #f6efe9;
 }
+
+.container{
+    padding-bottom: 100%;
+}

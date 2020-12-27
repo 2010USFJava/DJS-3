@@ -34,3 +34,9 @@ td {
 .btn{
     background-color: #71BA42;
 }
+
+img {
+    max-width: 50%;
+    height: auto;
+  }
+  
