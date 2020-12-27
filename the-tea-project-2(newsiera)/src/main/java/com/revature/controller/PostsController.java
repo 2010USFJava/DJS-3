@@ -72,12 +72,13 @@ public class PostsController {
 //		return postsRepository.save(post);
 //	}
 	@ResponseStatus(HttpStatus.CREATED)
-	@PostMapping("/addPost/{userId}")
-	public Posts createPost(@PathVariable(value="userId") int userId, @Valid @RequestBody Posts post) {
-		System.out.println("POST IS HERE " + 
-	post);
+	@PostMapping("/addPost/{userId}/{endpoint}")
+	public Posts createPost(@PathVariable(value="userId") int userId, @Valid @RequestBody Posts post, @PathVariable(value="endpoint") String endpoint) {
+		System.out.println("POST IS HERE " + post);
 		User user=usersRepository.getOne(userId);
 		post.setUser(user);
+		System.out.println("POST ID: " + post.getPostId());
+		postsRepository.putInImagesColumn(post.getPostId(), endpoint);
 		return postsRepository.save(post);
 	}
 	

@@ -7,7 +7,7 @@
         <form (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="name">Image</label>
-            <input type="file"  class="form-control" id="selectedFile" required [(ngModel)]="post.image" name="selectedFile" accept="image/jpeg, image/png">
+            <input (change)="onFileSelected($event)" type="file"  class="form-control" id="selectedFile" required [(ngModel)]="post.image" name="selectedFile" accept="image/jpeg, image/png">
           </div>
           <!-- (change)="onFileSelected($event)" -->
             <div class="form-group">

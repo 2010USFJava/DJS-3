@@ -12,6 +12,8 @@ export class UploadService {
   upload(file: File): Observable<any> {
     const formdata: FormData = new FormData();
     formdata.append('file', file);
+    console.log('TYPE: ' + typeof(file));
+    console.log('FILE:: ' + file)
     const req = new HttpRequest('POST', 'http://localhost:5555/file/upload', formdata, {reportProgress: true, responseType: 'text'});
     return this.http.request(req);
   }

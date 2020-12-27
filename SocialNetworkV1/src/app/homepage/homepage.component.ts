@@ -19,7 +19,7 @@ export class HomepageComponent implements OnInit {
   submitted = false;
   id:string;
   selectedFile: File;
-  key: string;
+  //key: string;
 
   constructor(private uploadService: UploadService, private postService: PostService, private route: ActivatedRoute, private router: Router, private cookieService: CookieService) { }
 
@@ -28,16 +28,16 @@ export class HomepageComponent implements OnInit {
     console.log(this.cookieService.get('cookie'));
     this.cookieService.get('cookie');
     this.id = this.cookieService.get('cookie');
-    this.post.image = this.key;
+    //this.post.image = this.key;
     this.reloadData();
   }
 
   reloadData(){
     this.posts = this.postService.getPostsList();
-    this.uploadService.getAllImages(this.key).subscribe(data => {
-      console.log(data);
+    // this.uploadService.getAllImages(this.key).subscribe(data => {
+    //   console.log(data);
 
-    })
+    // })
     console.log(this.posts);
     console.log("in reload data");
   }
@@ -97,16 +97,16 @@ export class HomepageComponent implements OnInit {
       error => console.log(error));
   }
 
-  // onFileSelected(event){
-  //   console.log(event);
-  //   this.selectedFile = event.target.files[0];
-  // }
+  onFileSelected(event){
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+  }
 
   upload(){
     this.uploadService.upload(this.selectedFile).subscribe(data => {
       this.post.image=JSON.stringify(data.body);
       console.log("LOOK AT THIS FOR URL: " + this.post.image);
-      this.save();
+      //this.save();
     }, error => console.log(error));
     
   }

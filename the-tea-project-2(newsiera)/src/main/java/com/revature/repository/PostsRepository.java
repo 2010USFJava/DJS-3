@@ -23,4 +23,9 @@ public interface PostsRepository extends JpaRepository<Posts, Integer> {
 	@Modifying
 	@Query(value = "UPDATE posts SET likes=likes+1 WHERE user_post_id=:postId", nativeQuery = true)
 	public void getLikes(@Param("postId") int postId);
+	
+	@Transactional
+	@Modifying
+	@Query(value = "UPDATE posts SET image=:image WHERE user_post_id=:postId", nativeQuery = true)
+	public void putInImagesColumn(@Param("postId") int postId, @Param("image") String image);
 }
