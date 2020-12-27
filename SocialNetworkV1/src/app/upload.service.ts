@@ -14,7 +14,7 @@ export class UploadService {
     formdata.append('file', file);
     console.log('TYPE: ' + typeof(file));
     console.log('FILE:: ' + file)
-    const req = new HttpRequest('POST', 'http://localhost:5555/file/upload', formdata, {reportProgress: true, responseType: 'text'});
+    const req = new HttpRequest('POST', 'http://localhost:5555/file/upload', formdata, {reportProgress: true, responseType: 'text', withCredentials: true});
     return this.http.request(req);
   }
 
@@ -22,7 +22,7 @@ export class UploadService {
     return this.http.get('http://localhost:5555/file/download');
   }
 
-  getAllImages(key: string): Observable<any>{
+  getAllImages(): Observable<any>{
     return this.http.get('http://localhost:5555/file/all');
   }
 }

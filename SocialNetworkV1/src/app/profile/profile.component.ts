@@ -5,6 +5,7 @@ import { User } from '../user';
 import { PostService } from '../post.service';
 import { Observable } from 'rxjs';
 import { Post } from '../post';
+import { UploadService } from '../upload.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,9 +14,10 @@ import { Post } from '../post';
 })
 export class ProfileComponent implements OnInit {
   user: User = new User();
-  posts: Observable<Post[]>; 
+  posts: Observable<Post[]>;
+  selectedFile: File;
 
-  constructor(private cookieService:CookieService, private httpService:HttpService, private postService:PostService) { }
+  constructor(private uploadService: UploadService, private cookieService:CookieService, private httpService:HttpService, private postService:PostService) { }
 
   ngOnInit(): void {
     console.log(this.cookieService.get('cookie'));

@@ -17,10 +17,10 @@ export class PostService {
     return this.http.get(`${this.baseUrl}/posts/${id}`);
   }
 
-  createPost(post:Object, userId:string, endpoint:string):Observable<Object>{
+  createPost(post:Object, userId:string):Observable<any>{
     console.log(post);
     console.log("in create post");
-    return this.http.post(`${this.baseUrl}/addPost/${userId}/${endpoint}`, post, {withCredentials: true });
+    return this.http.post(`${this.baseUrl}/addPost/${userId}`, post, {withCredentials: true});
   }
 
   updatePost(id:string, value:any):Observable<Object>{

@@ -3,6 +3,7 @@ import { User } from '../user';
 import { ActivatedRoute, Router} from '@angular/router';
 import { HttpService } from '../http.service';
 import { CookieService } from 'ngx-cookie-service';
+import { UploadService } from '../upload.service';
 
 @Component({
   selector: 'app-update-user',
@@ -12,8 +13,9 @@ import { CookieService } from 'ngx-cookie-service';
 export class UpdateUserComponent implements OnInit {
   user:User;
   id:string;
+  selectedFile: File;
 
-  constructor(private route: ActivatedRoute, private router: Router, private httpService: HttpService, private cookieService:CookieService) { }
+  constructor(private uploadService: UploadService, private route: ActivatedRoute, private router: Router, private httpService: HttpService, private cookieService:CookieService) { }
 
   ngOnInit() {
     this.user = new User();
@@ -34,14 +36,34 @@ export class UpdateUserComponent implements OnInit {
     this.httpService.updateUser(this.user).subscribe(
       data => {
         console.log(data);
+        if(this.user.profilepicture != null ){
         this.user = new User();
+        
         this.gotoList();
+        }
       },
       error => console.log(error));
    }
 
+   onFileSelected(event){
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+  }
+
+   upload(){
+    this.uploadService.upload(this.selectedFile).subscribe(data => {
+      this.user.profilepicture = JSON.stringify(data.body);
+      console.log("LOOK AT THIS FOR URL: " + this.user.profilepicture);
+      this.updateUser();
+    }, error => console.log(error));
+    
+  }
+  getMethod(){
+    this.upload();
+  }
+
   onSubmit(){
-    this.updateUser();
+    this.getMethod();
   }
 
   gotoList(){

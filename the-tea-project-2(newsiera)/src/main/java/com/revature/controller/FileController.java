@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.revature.service.S3Service;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials ="true")
 @RestController
 @RequestMapping("/file")
 public class FileController {

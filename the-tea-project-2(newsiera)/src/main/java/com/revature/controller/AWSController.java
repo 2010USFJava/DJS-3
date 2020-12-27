@@ -19,8 +19,8 @@ public class AWSController {
 	private String objectKey;
 	String clientRegion = "us-east-2";
     String bucketName = "thetea";
-    String accesskey = "";
-    String secretkey = "";
+    String accesskey = "AKIAV2C67LKNXDBLCP6V";
+    String secretkey = "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";
     
     @PostConstruct 
     private void initializeAmazon() {

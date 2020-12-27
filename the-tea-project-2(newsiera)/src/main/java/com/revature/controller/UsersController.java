@@ -129,6 +129,9 @@ public class UsersController {
 		user.setLastName(userDetails.getLastName());
 		user.setUsername(userDetails.getUsername());
 		user.setPassword(userDetails.getPassword());
+		String test = userDetails.getProfilepicture();
+		String set = test.substring(1, test.length()-1);
+		user.setProfilepicture(set);
 		user.setEmail(userDetails.getEmail());
 		System.out.println("email: " + user.getEmail());
 		try {

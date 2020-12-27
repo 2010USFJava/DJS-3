@@ -16,52 +16,31 @@ export class HomepageComponent implements OnInit {
   posts: Observable<Post[]>
   post: Post = new Post();
   like: Likes = new Likes();
-  submitted = false;
   id:string;
   selectedFile: File;
-  //key: string;
 
   constructor(private uploadService: UploadService, private postService: PostService, private route: ActivatedRoute, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit(){
-    
     console.log(this.cookieService.get('cookie'));
     this.cookieService.get('cookie');
     this.id = this.cookieService.get('cookie');
-    //this.post.image = this.key;
     this.reloadData();
   }
 
   reloadData(){
     this.posts = this.postService.getPostsList();
-    // this.uploadService.getAllImages(this.key).subscribe(data => {
-    //   console.log(data);
-
-    // })
+    this.uploadService.getAllImages().subscribe(data => {
+      console.log(data);
+      this.gotoList();
+    })
     console.log(this.posts);
     console.log("in reload data");
   }
-  
-  deletePost(id:string){
-    this.postService.deletePost(id).subscribe(
-      data => {
-        console.log(data);
-        this.reloadData();
-      },
-      error => console.log(error));
-  }
 
-  postDetails(id:string){
-    this.router.navigate(['/landing-page/details', id]);
-  }
-
-  updatePost(id:string){
-    this.router.navigate(['/landing-page/update', id]);
-  }
-
-  newPost():void{
-    this.submitted=false;
-    this.post=new Post();
+  onFileSelected(event){
+    console.log(event);
+    this.selectedFile = event.target.files[0];
   }
 
   save(){
@@ -69,18 +48,31 @@ export class HomepageComponent implements OnInit {
     this.postService.createPost(this.post, this.id).subscribe(
       data => {
         console.log(data);
-        this.cookieService.get('cookie');
-        this.upload();
+        this.ngOnInit();
         this.gotoList();
+        
       },
       error => console.log(error));  
   }
 
+  upload(){
+    this.uploadService.upload(this.selectedFile).subscribe(data => {
+      this.post.image= JSON.stringify(data.body);
+      console.log("LOOK AT THIS FOR URL: " + this.post.image);
+      this.save();
+    }, error => console.log(error));
+    
+  }
+
+  getMethod(){
+    this.upload();
+  }
+
   onSubmit(){
     console.log('in onSubmit');
-    this.submitted = true;
-    this.save();
-    this.ngOnInit();
+    
+    this.getMethod();
+    
   }
 
   gotoList(){
@@ -97,18 +89,23 @@ export class HomepageComponent implements OnInit {
       error => console.log(error));
   }
 
-  onFileSelected(event){
-    console.log(event);
-    this.selectedFile = event.target.files[0];
+
+
+  deletePost(id:string){
+    this.postService.deletePost(id).subscribe(
+      data => {
+        console.log(data);
+        this.reloadData();
+      },
+      error => console.log(error));
   }
 
-  upload(){
-    this.uploadService.upload(this.selectedFile).subscribe(data => {
-      this.post.image=JSON.stringify(data.body);
-      console.log("LOOK AT THIS FOR URL: " + this.post.image);
-      //this.save();
-    }, error => console.log(error));
-    
+  postDetails(id:string){
+    this.router.navigate(['/landing-page/details', id]);
+  }
+
+  updatePost(id:string){
+    this.router.navigate(['/landing-page/update', id]);
   }
 
 }
