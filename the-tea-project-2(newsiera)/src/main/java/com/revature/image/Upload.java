@@ -25,8 +25,8 @@ public class Upload {
         String bucketName = "thetea";
         String objectKey = "objectkey2";
         
-        String accesskey = "AKIAV2C67LKNXDBLCP6V";
-        String secretkey = "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";
+        String accesskey = "";
+        String secretkey = "";
         
         BasicAWSCredentials credentials = new BasicAWSCredentials(accesskey, secretkey);
 
