@@ -5,6 +5,7 @@ import { Post } from '../post';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Likes } from '../likes';
+import { UploadService } from '../upload.service';
 
 @Component({
   selector: 'app-homepage',
@@ -17,18 +18,26 @@ export class HomepageComponent implements OnInit {
   like: Likes = new Likes();
   submitted = false;
   id:string;
+  selectedFile: File;
+  key: string;
 
-  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router, private cookieService: CookieService) { }
+  constructor(private uploadService: UploadService, private postService: PostService, private route: ActivatedRoute, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit(){
-    this.reloadData();
+    
     console.log(this.cookieService.get('cookie'));
     this.cookieService.get('cookie');
     this.id = this.cookieService.get('cookie');
+    this.post.image = this.key;
+    this.reloadData();
   }
 
   reloadData(){
     this.posts = this.postService.getPostsList();
+    this.uploadService.getAllImages(this.key).subscribe(data => {
+      console.log(data);
+
+    })
     console.log(this.posts);
     console.log("in reload data");
   }
@@ -56,31 +65,22 @@ export class HomepageComponent implements OnInit {
   }
 
   save(){
-    //this.post.userId = 2;
     console.log(this.post);
     this.postService.createPost(this.post, this.id).subscribe(
       data => {
-        //this.post.likeCount = 0;
         console.log(data);
         this.cookieService.get('cookie');
-        var id = this.cookieService.get('cookie');
-        //const post = new FormData();
-        //post.append('post', data);
+        this.upload();
         this.gotoList();
       },
       error => console.log(error));  
-    //console.log("in save method");
-    //this.gotoList();
-        //this.post = new Post();
-        //this.gotoPost();
-      
-      //error => console.log(error);
   }
 
   onSubmit(){
     console.log('in onSubmit');
     this.submitted = true;
     this.save();
+    this.ngOnInit();
   }
 
   gotoList(){
@@ -97,10 +97,19 @@ export class HomepageComponent implements OnInit {
       error => console.log(error));
   }
 
-  // upload(){
-  //   this.postService.s3upload();
-    
+  // onFileSelected(event){
+  //   console.log(event);
+  //   this.selectedFile = event.target.files[0];
   // }
+
+  upload(){
+    this.uploadService.upload(this.selectedFile).subscribe(data => {
+      this.post.image=JSON.stringify(data.body);
+      console.log("LOOK AT THIS FOR URL: " + this.post.image);
+      this.save();
+    }, error => console.log(error));
+    
+  }
 
 }
 

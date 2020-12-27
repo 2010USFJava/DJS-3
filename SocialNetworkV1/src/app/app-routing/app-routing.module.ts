@@ -12,7 +12,6 @@ import { ProfileComponent } from '../profile/profile.component';
 
 const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'landing-page'}, 
                         {path: 'landing-page', component: LandingPageComponent},
-                        {path: 'landing-page/register', component: RegisterComponent},
                         {path: 'landing-page/login', component: LoginComponent},
                         {path: 'landing-page/users', component: UserListComponent},
                         {path: 'landing-page/add', component: CreateUserComponent},

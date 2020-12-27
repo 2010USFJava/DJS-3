@@ -13,7 +13,7 @@ export class HttpService {
     return this.http.get(`${this.baseUrl}/users/${id}`);
   }
 
-  createUser(user:Object):Observable<Object>{
+  createUser(user:Object):Observable<any>{
     console.log(user);
     return this.http.post(`${this.baseUrl}/add`, user);
   }

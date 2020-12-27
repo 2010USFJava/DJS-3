@@ -20,7 +20,7 @@ export class PostService {
   createPost(post:Object, userId:string):Observable<Object>{
     console.log(post);
     console.log("in create post");
-    return this.http.post(`${this.baseUrl}/addPost/${userId}`, post);
+    return this.http.post(`${this.baseUrl}/addPost/${userId}`, post, {withCredentials: true });
   }
 
   updatePost(id:string, value:any):Observable<Object>{

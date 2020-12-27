@@ -28,7 +28,7 @@ import com.revature.models.User;
 import com.revature.repository.PostsRepository;
 import com.revature.repository.UsersRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials ="true")
 @RestController
 @RequestMapping("/theteaPost")
 public class PostsController {
