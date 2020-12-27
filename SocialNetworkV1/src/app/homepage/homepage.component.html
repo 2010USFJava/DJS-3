@@ -6,8 +6,8 @@
     <div style="width:400px;">
         <form (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="name">Post a picture, how you feel, spill the tea!</label>
-                <input type="text" class="form-control" id="userPost" required [(ngModel)]="post.userPost" name="userPost">
+              
+                <input type="text" class="form-control" id="userPost" required [(ngModel)]="post.userPost" name="userPost" placeholder="Post a picture, how you feel, spill the tea!">
             </div>
             
             <button type="submit" class="btn btn-success">Submit</button>
