@@ -6,7 +6,7 @@
 <h2>Technologies Used</h2>
 <ul>
   <li>Java</li>
-  <li>Jenkins/li>
+  <li>Jenkins</li>
   <li>Spring Boot</li>
   <li>Hibernate</li>
   <li>CSS</li>
