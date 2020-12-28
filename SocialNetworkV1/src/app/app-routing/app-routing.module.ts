@@ -8,16 +8,21 @@ import { CreateUserComponent } from '../create-user/create-user.component';
 import { UserListComponent} from '../user-list/user-list.component';
 import { UpdateUserComponent } from '../update-user/update-user.component';
 import { HomepageComponent } from '../homepage/homepage.component';
+import { ProfileComponent } from '../profile/profile.component';
+import { OtherUserComponent } from '../other-user/other-user.component';
 
 const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'landing-page'}, 
                         {path: 'landing-page', component: LandingPageComponent},
-                        {path: 'register', component: RegisterComponent},
-                        {path: 'login', component: LoginComponent},
-                        {path: 'users', component: UserListComponent},
-                        {path: 'add', component: CreateUserComponent},
-                        {path: 'update/:id', component: UpdateUserComponent},
-                        {path: 'details/:id', component: UserDetailsComponent},
-                        {path: 'homepage', component: HomepageComponent}
+                        {path: 'landing-page/login', component: LoginComponent},
+                        {path: 'landing-page/users', component: UserListComponent},
+                        {path: 'landing-page/add', component: CreateUserComponent},
+                        {path: 'landing-page/update/:id', component: UpdateUserComponent},
+                        {path: 'landing-page/details/:id', component: UserDetailsComponent},
+                        {path: 'landing-page/homepage', component: HomepageComponent},
+                        {path: 'landing-page/posts', component: HomepageComponent},
+                        {path: 'landing-page/profile', component: ProfileComponent},
+                        {path: 'landing-page/logout', component: LandingPageComponent},
+                        {path: 'landing-page/otherProfile/:id', component: OtherUserComponent}               
                       ];
 
 @NgModule({

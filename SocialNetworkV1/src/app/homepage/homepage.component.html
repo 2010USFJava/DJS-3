@@ -1,16 +1,26 @@
+<app-nav-bar></app-nav-bar>
 <div class="panel panel-primary">
     <div class="panel-heading">
       <h2>Homepage</h2>
     </div>
-    <div [hidden]="submitted" style="width:400px;">
+    <div>
         <form (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Image</label>
+            <input (change)="onFileSelected($event)" type="file"  class="form-control" id="selectedFile" required [(ngModel)]="post.image" name="selectedFile" accept="image/jpeg, image/png">
+          </div>
+          <!-- (change)="onFileSelected($event)" -->
             <div class="form-group">
                 <label for="name">Post a picture, how you feel, spill the tea!</label>
-                <input type="text" class="form-control" id="user_post" required [(ngModel)]="post.user_post" name="user_post">
+                <input type="text" class="form-control" id="userPost" required [(ngModel)]="post.userPost" name="userPost">
             </div>
             
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
+        <!-- <form>
+          <input type="file" id="imgUp"/>
+          <button (click)="upload()" id="rando" type="submit" class="btn btn-success">Post Image</button>
+      </form> -->
     </div>
     <!-- <div [hidden]="!submitted">
         <h4>You submitted sucessfully!</h4>
@@ -25,11 +35,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let post of posts | async">
-            <td>{{post.user_post}}</td>
-            <td><button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
-                <button (click)="updateUser(user.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
-                <button (click)="userDetails(user.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-            </td>
+            <td>{{post.userPost}}</td>
+            <td> <img src="{{post.image}}" > </td>
+            <td>{{post.likes}}</td>
+            <td><button (click)="createLike(post.postId)" class="btn">Like</button>
+                 <!--<button (click)="updateUser()" class="btn btn-info" style="margin-left: 10px">Update</button>
+                <button (click)="userDetails()" class="btn btn-info" style="margin-left: 10px">Details</button>-->
+            </td> 
           </tr>
         </tbody>
       </table>

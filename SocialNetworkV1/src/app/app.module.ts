@@ -16,6 +16,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { CookieService } from 'ngx-cookie-service';
+import { PostDetailsComponent } from './post-details/post-details.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { OtherUserComponent } from './other-user/other-user.component';
+import { EventEmitter } from 'events';
+import { EventEmitterService } from './event-emitter.service';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +35,10 @@ import { CookieService } from 'ngx-cookie-service';
     CreateUserComponent,
     UserDetailsComponent,
     UserListComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    PostDetailsComponent,
+    NavBarComponent,
+    OtherUserComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +48,9 @@ import { CookieService } from 'ngx-cookie-service';
   ],
   providers: [
     HttpService,
-    CookieService
+    CookieService,
+    EventEmitterService,
+    OtherUserComponent
   ],
   bootstrap: [AppComponent]
 })

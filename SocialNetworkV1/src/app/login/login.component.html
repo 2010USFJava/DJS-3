@@ -1,8 +1,21 @@
-<h1>Welcome to Something</h1>
-<form (ngSubmit)="onSubmit()" action="homepage.component.html">
-    <label>Username:</label><input type="username" id="username" required [(ngModel)]="user.username" name="username"/>
-    <label>Password:</label><input type="password" id="password" required [(ngModel)]="user.password" name="password"/>
-    <button [routerLink]="['/homepage']" type="submit" value="login">Login</button>
+<!-- Custom styles for this template -->
+<link href="login.component.css" rel="stylesheet">
+
+<body class="text-center">
+
+<form (ngSubmit)="onSubmit()"> <!--action="homepage.component.html"-->
+   <br/>
+   <div class="form-group">
+    <label>Username:</label><input type="username" class="form-control" id="username" required [(ngModel)]="user.username" name="username"/>
+   </div>
+    <br/>
+    <div class="form-group">
+    <label>Password:</label><input type="password" class="form-control" id="password" required [(ngModel)]="user.password" name="password"/>
+    </div>
+    <br/>
+    <button type="button" class="btn btn-primary" type="submit" value="login">Login</button>
     
 </form>
-<h1>This is the user you logged in with: {{login.firstName}} {{login.userId}}</h1>
+<div [hidden]="!submitted">
+    <h4>Unsuccessful Login </h4>
+</div>
