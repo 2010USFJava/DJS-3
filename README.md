@@ -24,7 +24,7 @@
   <li>users are able to login</li>
   <li>Users are able to apply for an account</li>
   <li>Userss are able to see their feed which consists of their posts and others on their app</li>
-  <li>Users are able to create their own profile</li>
+  <li>Users are able to create their own profile and see their posts in their profile</li>
 </ul>
 
 <p>To-Do list:</p>
