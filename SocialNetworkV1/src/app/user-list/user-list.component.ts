@@ -79,7 +79,7 @@ export class UserListComponent implements OnInit {
     console.log("this is the id: " + id); 
     
     //this.otherUserComponent.otherUserProfile(id);
-    this.otherUserComponent.temp(id);
+    //this.otherUserComponent.temp(id);
     this.router.navigate(['/landing-page/otherProfile']);
   }
 

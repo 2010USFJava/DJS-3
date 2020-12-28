@@ -50,6 +50,8 @@
       <tbody>
         <tr *ngFor="let post of posts">
           <td>{{post.userPost}}</td>
+          <td> <img src="{{post.image}}" > </td>
+          <td>{{post.likes}}</td>
           <!-- <td><button (click)="deleteUser()" class="btn btn-danger">Delete</button>
               <button (click)="updateUser()" class="btn btn-info" style="margin-left: 10px">Update</button>
               <button (click)="userDetails()" class="btn btn-info" style="margin-left: 10px">Details</button>
