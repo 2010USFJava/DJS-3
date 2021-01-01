@@ -5,17 +5,19 @@
 
 <h2>Technologies Used</h2>
 <ul>
-  <li>Java</li>
+  <li>Java - version 1.8</li>
   <li>Jenkins</li>
   <li>Spring Boot</li>
   <li>Hibernate</li>
   <li>CSS</li>
   <li>JavaScript</li>
   <li>HTML</li>
+  <li>PostgreSQL - version 12</li>
   <li>Angular</li>
   <li>Spring Tools Suite</li>
   <li>DBeaver</li>
   <li>Amazon Web Services</li>
+  <li>Trello</li>
 </ul>
 
 <h2>Features</h2>
